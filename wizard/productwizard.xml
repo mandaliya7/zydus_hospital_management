@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+        <!-- Product Selection Wizard Form View -->
+        <record id="view_product_selection_wizard" model="ir.ui.view">
+            <field name="name">product.selection.wizard.form</field>
+            <field name="model">hospital.product.selection.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Select Products">
+                    <sheet>
+                        <group>
+                            <field name="product_ids" widget="many2many_tags"/>
+                            <field name="quantity"/>
+                        </group>
+                        <footer>
+                            <button string="Confirm" type="object" name="action_confirm" class="oe_highlight"/>
+                            <button string="Cancel" type="object" name="action_cancel" class="btn-default"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_product_selection_wizard" model="ir.actions.act_window">
+            <field name="name">Product Selection</field>
+            <field name="res_model">hospital.product.selection.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_product_selection_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>
