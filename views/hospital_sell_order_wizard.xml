@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <!-- Define the model for hospital.sell.order.wizard -->
+        <record id="model_hospital_sell_order_wizard" model="ir.model">
+            <field name="name">Hospital Sell Order Wizard</field>
+            <field name="model">hospital.sell.order.wizard</field>
+            <field name="state">base</field>
+        </record>
+    </data>
+</odoo>

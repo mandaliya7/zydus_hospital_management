@@ -1,0 +1,56 @@
+<odoo>
+    <!-- Form view for hospital treatment -->
+    <record id="view_treatment_form" model="ir.ui.view">
+        <field name="name">hospital.treatment.form</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <form string="Treatment">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,done"/>
+                    <button name="set_active" string="active" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="set_done" type="object" string="Done" class="oe_highlight" invisible="state != 'active'"/>
+                    <button name="%(action_product_selection_wizard)d" string="wizard" type="action" class="oe_highlight"/>
+                    <button name="smart" type="object" string="sales order" icon="fa-list" class="oe_stat_button" />
+
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="physician_id"/>
+                        <field name="treatment_date"/>
+                        <field name="diagnosis_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for hospital treatment -->
+    <record id="view_hospital_treatment_tree" model="ir.ui.view">
+        <field name="name">hospital.treatment.tree</field>
+        <field name="model">hospital.treatment</field>
+        <field name="arch" type="xml">
+            <tree string="Treatments">
+                <field name="patient_id" string="Patient"/>
+                <field name="physician_id" string="Physician"/>
+                <field name="treatment_date" string="Treatment Date"/>
+                <field name="diagnosis_id"/>
+                <field name="state" string="Status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action to open the list of treatments -->
+    <record id="action_hospital_treatment" model="ir.actions.act_window">
+        <field name="name">Treatments</field>
+        <field name="res_model">hospital.treatment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item for treatment records -->
+    <menuitem id="menu_hospital_treatment_action"
+              name="Treatment"
+              parent="menu_hospital_management"
+              action="action_hospital_treatment"/>
+</odoo>
